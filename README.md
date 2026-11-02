@@ -5,10 +5,14 @@ Full stack project: **Node.js + Express + SQLite** backend and an HTML/CSS/JavaS
 ## Structure
 ```
 backend/
-  server.js          # REST API + serves /frontend
-  sql/schema.sqlite.sql # SQLite tables + sample data (applied on startup)
-  data/library.db   # created automatically on first run
-  .env              # PORT, optional DB_FILE
+  app.js             # Express app and REST API
+  server.js          # local entry point (npm start)
+  db.js              # Turso (hosted) or local SQLite file
+  sql/schema.sqlite.sql # tables + sample data (applied on startup)
+  data/library.db   # local database, created on first run
+  .env              # PORT, optional DB_FILE (local only)
+api/index.js         # Vercel serverless entry
+vercel.json          # Vercel config (serves frontend/, routes /api)
 frontend/
   index.html books.html members.html issued.html profile.html rules.html
   css/style.css
@@ -19,11 +23,12 @@ frontend/
 ```
 
 ## Database
-No setup needed. Requires Node 22.13+ (uses the built-in `node:sqlite`). The database file and sample data are created on first start. Set `DB_FILE` in `.env` to change its location.
+Local: no setup needed. Requires Node 22.13+ (uses the built-in `node:sqlite`); the database file and sample data are created on first start. Set `DB_FILE` in `backend/.env` to change its location.
+
+Hosted (Vercel): set `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN` in the Vercel project's environment variables. The schema and sample data are created automatically on the first request.
 
 ## Run
 ```bash
-cd backend
 npm install
 npm start
 ```

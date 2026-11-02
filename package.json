@@ -1,0 +1,7 @@
+{
+  "name": "libranest-library-management-system",
+  "private": true,
+  "scripts": {
+    "start": "npm --prefix backend start"
+  }
+}

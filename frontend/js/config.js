@@ -1,3 +1,3 @@
-// Paste your own values from Supabase: Project Settings -> API
-const SUPABASE_URL = 'https://YOUR-PROJECT-ID.supabase.co';
-const SUPABASE_ANON_KEY = 'YOUR-ANON-OR-PUBLISHABLE-KEY';
+// Keep empty when frontend is served from the same backend origin.
+// Example for remote API: const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = '';
